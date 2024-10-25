@@ -89,7 +89,7 @@ export async function GET(request: NextRequest) {
     const ttml = await getTTML(id, token, store);
     return NextResponse.json(
       {
-        success: true,
+        success: !!ttml,
         message: ttml ? "Lyrics Found" : "Lyrics not found",
         status: ttml ? 200 : 404,
         data: ttml,

@@ -74,16 +74,14 @@ export const getTTML = async (
 };
 
 export const parseAppleMusicURL = (url: string) => {
-  // Match `store` and `id` from the path, while allowing for an additional `id` in the query parameter
   const pathMatch = url.match(
-    /https:\/\/music\.apple\.com\/(in|us)\/\w+\/[\w-]+\/(\d+)/,
+    /https:\/\/music\.apple\.com\/([a-z]{2,3})\/\w+\/[\w-]+\/(\d+)/,
   );
   const queryMatch = url.match(/[?&]i=(\d+)/);
 
   if (pathMatch) {
     return {
       store: pathMatch[1],
-      // Use `id` from the query parameter if it exists, otherwise use the `id` from the path
       id: queryMatch ? queryMatch[1] : pathMatch[2],
     };
   }
@@ -92,6 +90,6 @@ export const parseAppleMusicURL = (url: string) => {
 
 export const isValidAppleMusicUrl = (url: string): boolean => {
   const pattern =
-    /^https:\/\/music\.apple\.com\/(\w{2})\/(song|album)\/[^/]+\/(\d+)(\?.*i=\d+.*)?$/;
+    /^https:\/\/music\.apple\.com\/([a-z]{2,3})\/(song|album)\/[^/]+\/(\d+)(\?.*i=\d+.*)?$/i;
   return pattern.test(url);
 };

@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { cn } from "@/lib/utils";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function Demo() {
   const [inputType, setInputType] = useState("url");
@@ -77,10 +78,12 @@ export default function Demo() {
               result.success ? "text-green-500" : "text-destructive",
             )}
           >
-            {result.success ? "Result" : "Error"}
+            {result.success ? "Success" : "Error"}
           </AlertTitle>
           <AlertDescription>
-            <code>{`${JSON.stringify(result, null, 2)}`}</code>
+            <ScrollArea className="h-[calc(100vh-430px)]">
+              <code>{`${JSON.stringify(result, null, 2)}`}</code>
+            </ScrollArea>
           </AlertDescription>
         </Alert>
       )}

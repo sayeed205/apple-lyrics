@@ -12,7 +12,7 @@ export default function Home() {
           <TabsTrigger value="docs">Documentation</TabsTrigger>
           <TabsTrigger value="demo">API Demo</TabsTrigger>
         </TabsList>
-        <div className="border rounded-lg p-6 min-h-[400px]">
+        <div className="border rounded-lg p-6 ">
           <TabsContent
             value="docs"
             className="mt-0 [&>*]:animate-in [&>*]:fade-in-50"

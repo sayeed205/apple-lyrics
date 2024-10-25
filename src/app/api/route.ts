@@ -13,11 +13,22 @@ export async function GET(request: NextRequest) {
   let id = "";
   let store = "in"; // Default to 'us' if store is not provided
 
+  if (!urlParam && !idParam) {
+    return NextResponse.json(
+      {
+        success: false,
+        message: 'No "id" or "url" provided',
+        status: 400,
+        data: null,
+      },
+      { status: 400 },
+    );
+  }
+
   if (urlParam) {
     // Validate and parse Apple Music URL
     if (isValidAppleMusicUrl(urlParam)) {
       const meta = parseAppleMusicURL(urlParam);
-      console.log("meta", meta);
       if (meta) {
         id = meta.id;
         store = meta.store;

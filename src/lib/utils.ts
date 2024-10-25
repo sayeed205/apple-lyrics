@@ -90,6 +90,6 @@ export const parseAppleMusicURL = (url: string) => {
 
 export const isValidAppleMusicUrl = (url: string): boolean => {
   const pattern =
-    /^https:\/\/music\.apple\.com\/([a-z]{2,3})\/(song|album)\/[^/]+\/(\d+)(\?.*i=\d+.*)?$/i;
+    /^https:\/\/music\.apple\.com\/([a-z]{2,3})\/(song|album)\/[^/]+\/(\d+)(\?.*)?$/i;
   return pattern.test(url);
 };

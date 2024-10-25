@@ -1,7 +1,19 @@
+import Link from "next/link";
+
 export default function Documentation() {
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-semibold">API Documentation</h2>
+      <h2 className="text-2xl font-semibold">
+        API Documentation -{" "}
+        <Link
+          href="https://github.com/sayeed205/apple-lyrics"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-indigo-600 hover:text-indigo-600"
+        >
+          Source
+        </Link>
+      </h2>
       <p>
         This API provides lyrics from Apple Music from Apple Music URL or a
         music ID. There is only one endpoint available:

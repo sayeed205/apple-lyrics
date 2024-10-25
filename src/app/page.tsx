@@ -1,10 +1,11 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Documentation from "@/components/documentation";
 import Demo from "@/components/demo";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function Home() {
   return (
-    <div className="container mx-auto max-w-3xl p-4">
+    <div className="container mx-auto max-w-3xl p-4 relative min-h-screen">
       <h1 className="text-3xl font-bold mb-6">Music API</h1>
       <Tabs defaultValue="docs" className="space-y-4">
         <TabsList className="grid w-full grid-cols-2">
@@ -26,6 +27,8 @@ export default function Home() {
           </TabsContent>
         </div>
       </Tabs>
+
+      <ThemeToggle />
     </div>
   );
 }

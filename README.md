@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Apple Lyrics
 
-## Getting Started
+To run Locally add .env `MEDIA_USER_TOKEN` and run `bun dev`.
 
-First, run the development server:
+### Docs
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This API provides lyrics from Apple Music, either by providing an Apple Music URL or a music ID. Only one endpoint is available:
+
+```plaintext
+/api
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Query Parameters
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **url**: A valid Apple Music URL  
+  *Example:*  
+  `https://music.apple.com/in/album/never-gonna-give-you-up/1559523357?i=1559523359`  
+  `https://music.apple.com/in/song/never-gonna-give-you-up/1559523359`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **id**: A valid music ID (numeric string)  
+  *Example:*  
+  `1559523359`
 
-## Learn More
+**Note:** You must provide either the `url` or `id` parameter, but not both.
 
-To learn more about Next.js, take a look at the following resources:
+### Response Format
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The API returns a JSON object with the following structure:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```json
+{
+  "success": true,
+  "message": "Lyrics Found",
+  "status": 200,
+  "data": "<ttml>..."
+}
+```
 
-## Deploy on Vercel
+### Error Handling
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The API will return appropriate error messages for invalid inputs, missing parameters, or server errors. Always check the response status code and handle errors accordingly in your application.
